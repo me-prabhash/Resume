@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabhash Thakur - Resume</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --accent: #16325c;
+            --text-dark: #111111;
+            --text-medium: #2b2b2b;
+            --text-light: #5a5a5a;
+            --border-light: #cfcfcf;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.5;
+            background: #f0f0f0;
+            font-size: 9.5pt;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px 42px 34px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 18px;
+        }
+
+        .name {
+            font-family: 'Raleway', sans-serif;
+            font-size: 26pt;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .title {
+            font-size: 11.5pt;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1px;
+            margin-bottom: 8px;
+        }
+
+        .contact-line {
+            font-size: 9pt;
+            color: var(--text-medium);
+        }
+
+        .contact-line a {
+            color: var(--text-medium);
+            text-decoration: none;
+        }
+
+        .contact-sep {
+            color: var(--border-light);
+            padding: 0 7px;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            margin-bottom: 17px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 11pt;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 9px;
+        }
+
+        /* ===== SUMMARY ===== */
+        .summary-text {
+            font-size: 9.5pt;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-row {
+            font-size: 9.5pt;
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin-bottom: 5px;
+        }
+
+        .skills-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .skills-label {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* ===== EXPERIENCE ===== */
+        .experience-item {
+            margin-bottom: 15px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .exp-role {
+            font-size: 11pt;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .exp-dates {
+            font-size: 9pt;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .exp-company {
+            font-size: 10pt;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .exp-description ul {
+            margin-left: 16px;
+        }
+
+        .exp-description li {
+            font-size: 9.5pt;
+            color: var(--text-medium);
+            margin-bottom: 3px;
+            line-height: 1.5;
+        }
+
+        /* ===== EDUCATION ===== */
+        .edu-item {
+            font-size: 9.5pt;
+            margin-bottom: 5px;
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .edu-school {
+            color: var(--text-medium);
+        }
+
+        /* ===== CERTIFICATIONS ===== */
+        .cert-item {
+            font-size: 9.5pt;
+            color: var(--text-medium);
+            margin-bottom: 4px;
+            padding-left: 13px;
+            position: relative;
+        }
+
+        .cert-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cert-item::before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .cert-item a {
+            color: var(--text-dark);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* ===== RECOGNITION ===== */
+        .award-item {
+            font-size: 9.5pt;
+            color: var(--text-medium);
+            margin-bottom: 3px;
+            line-height: 1.5;
+            padding-left: 13px;
+            position: relative;
+        }
+
+        .award-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .award-item::before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* ===== LANGUAGES ===== */
+        .lang-text {
+            font-size: 9.5pt;
+            color: var(--text-medium);
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background: #fff;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .experience-item {
+                break-inside: avoid;
+            }
+
+            .exp-header,
+            .exp-company {
+                break-after: avoid;
+            }
+
+            .section-title {
+                break-after: avoid;
+            }
+        }
+
+        @page {
+            margin: 12mm 12mm;
+            size: A4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <h1 class="name">Prabhash Thakur</h1>
+            <p class="title">Senior Lead Engineer</p>
+            <div class="contact-line">
+                <span>+91 8759480218</span>
+                <span class="contact-sep">|</span>
+                <a href="mailto:thakurprabhash80@gmail.com">thakurprabhash80@gmail.com</a>
+                <span class="contact-sep">|</span>
+                <a href="https://linkedin.com/in/imprabhash">linkedin.com/in/imprabhash</a>
+            </div>
+        </header>
+
+        <!-- ===== SUMMARY ===== -->
+        <section class="section">
+            <h2 class="section-title">Summary</h2>
+            <p class="summary-text">
+                Data engineer with 8+ years on Snowflake and dbt, currently leading a team of 8 at KIPI.AI building a
+                Data Mesh and Gen AI data products with Snowflake Cortex. Recent work covers RAG applications over
+                unstructured data (PDFs, DOCX, audio transcripts) using Cortex Search, self-service analytics through
+                Cortex Analyst, and LLM-driven enrichment pipelines with Cortex functions. Comfortable picking the right
+                modelling approach for the problem (Data Vault, star schema, medallion), locking down access with RBAC
+                and masking policies, and keeping Snowflake compute costs under control. Also handle architecture
+                decisions and work directly with client stakeholders on scope and delivery. SnowPro Advanced Architect,
+                SnowPro Advanced Engineer, SnowPro Core, and dbt Developer certified.
+            </p>
+        </section>
+
+        <!-- ===== SKILLS ===== -->
+        <section class="section">
+            <h2 class="section-title">Skills</h2>
+            <p class="skills-row"><span class="skills-label">Data Platform &amp; Engineering:</span> Snowflake, dbt,
+                SQL, Python, Azure Data Factory, Databricks, Azure Data Lake, AWS S3, Airflow, Jinja, ETL/ELT Pipeline
+                Design, Data Warehouse Architecture</p>
+            <p class="skills-row"><span class="skills-label">Snowflake AI &amp; Gen AI:</span> Cortex COMPLETE,
+                CLASSIFY_TEXT, EXTRACT_ANSWER, SENTIMENT, SUMMARIZE, TRANSLATE, AI_PARSE_DOCUMENT, Cortex Search (RAG),
+                Cortex Analyst, Cortex Fine-Tuning, Document AI, Streamlit in Snowflake, Unstructured Data (PDF, DOCX,
+                Audio)</p>
+            <p class="skills-row"><span class="skills-label">Architecture &amp; Governance:</span> Data Mesh, Medallion
+                Architecture, Data Vault Modeling, Dimensional Modeling, Star Schema, Data Quality Frameworks,
+                dbt-expectations, Row-Level Security, RBAC, Dynamic Data Masking, Data Lineage, CI/CD for dbt, Azure
+                DevOps, Git</p>
+            <p class="skills-row"><span class="skills-label">Reporting &amp; Automation:</span> Power BI, DAX, M Query,
+                Power Automate, PowerApps, Azure Logic Apps, Azure Functions, SAP BW, SAP HANA</p>
+            <p class="skills-row"><span class="skills-label">Leadership &amp; Delivery:</span> Team Leadership (8+
+                engineers), Mentorship, Stakeholder Management, Sprint Planning, Delivery Planning, Cross-Functional
+                Governance</p>
+        </section>
+
+        <!-- ===== EXPERIENCE ===== -->
+        <section class="section">
+            <h2 class="section-title">Experience</h2>
+
+            <!-- KIPI.AI -->
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-role">Senior Lead Engineer</div>
+                    <div class="exp-dates">July 2025 - Present</div>
+                </div>
+                <div class="exp-company">KIPI.AI</div>
+                <div class="exp-description">
+                    <ul>
+                        <li>Lead a team of 8 building a <strong>Data Mesh</strong> on Snowflake for KIPI's largest
+                            client, with data products across 5+ domains used by around 200 people.</li>
+                        <li>Built a <strong>RAG-based Q&amp;A chatbot</strong>. Used <strong>AI_PARSE_DOCUMENT</strong>
+                            to pull text out of PDFs, DOCX files and audio transcripts, chunked and indexed it into
+                            Cortex Search, and used Cortex COMPLETE to generate the answers. Shipped as a Streamlit app
+                            in Snowflake. Query resolution went from hours to seconds and new joiners get up to speed
+                            faster.</li>
+                        <li>Automated classification of 50K+ customer feedback records a month coming from free-text
+                            survey responses, support emails and call recordings. Added <strong>Cortex LLM
+                                functions</strong> (CLASSIFY_TEXT, SENTIMENT, EXTRACT_ANSWER) into the enrichment
+                            pipeline, which freed up 3 people and turned a weeks-long backlog into same-day output.</li>
+                        <li>Set up <strong>Cortex Analyst</strong> so business users could ask questions in plain English
+                            instead of raising SQL requests. Ad-hoc report requests dropped by around 40%.</li>
+                        <li>Used <strong>Document AI</strong> to pull amounts, dates, vendor names and line items out of
+                            vendor invoices and contracts, feeding straight into the finance data product. Cut roughly
+                            20 hours a week of manual data entry and sped up accounts payable processing.</li>
+                        <li>Fine-tuned a base LLM with <strong>Cortex Fine-Tuning</strong> on client-specific labels,
+                            which improved classification accuracy by around 15% over the out-of-the-box model.</li>
+                        <li>Cut compute cost on the main ingestion pipeline by 60%. Moved it to incremental loads with
+                            micro-batching and rewrote the SCD2 logic so it runs on an XS warehouse instead of an L, on
+                            over 1TB a day.</li>
+                        <li>Wrote macros that purge stale snapshots automatically, cutting storage and processing
+                            overhead by around 40%.</li>
+                        <li>Set up coding standards, PR review process, branching strategy and naming conventions. None
+                            of this was consistent before I joined.</li>
+                        <li>Built a PII scanner that checks every data product for missing Row-Level Security or masking
+                            policies and alerts the domain owner when it finds a gap.</li>
+                        <li>Built the data quality layer with <strong>dbt-expectations</strong> and am putting together a
+                            wider governance framework so quality holds up as new domains come on.</li>
+                        <li>Run weekly sessions with the team on code walkthroughs, architecture and practices.</li>
+                        <li>Main point of contact for 3 client stakeholder groups. Handle sprint planning, backlog
+                            grooming and delivery timelines.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Beyond Key -->
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-role">Senior Technical Lead</div>
+                    <div class="exp-dates">June 2023 - July 2025</div>
+                </div>
+                <div class="exp-company">Beyond Key</div>
+                <div class="exp-description">
+                    <ul>
+                        <li>Led 8+ engineers on Snowflake migrations and new builds for enterprise clients.</li>
+                        <li>Brought <strong>dbt</strong> into client projects from nothing. Set up the project structure,
+                            wrote the standards documentation and built CI/CD through Azure DevOps for clients who had
+                            never used dbt.</li>
+                        <li>Designed ETL/ELT pipelines on Snowflake using <strong>medallion architecture</strong>
+                            (bronze/silver/gold) and star schema modelling, turning raw data into datasets analysts
+                            could use directly.</li>
+                        <li>Built <strong>ADF pipelines</strong> with dynamic schema detection that created Snowflake
+                            stages and tables on their own, so nobody had to hand-write DDL for each new source.</li>
+                        <li>Wrote JavaScript stored procedures in Snowflake to set up stages and Snowpipes from config
+                            table entries.</li>
+                        <li>Set up <strong>Secure Data Sharing</strong> for cross-organization distribution, plus RBAC,
+                            dynamic masking and tag-based masking on sensitive columns.</li>
+                        <li>Wrote reusable macros for error logging on failed dbt models and for handling insert and
+                            update timestamps consistently across projects.</li>
+                        <li>Wrote custom dbt tests for referential integrity and source-to-target row count checks.</li>
+                        <li>Ran internal Snowflake and dbt training for 20+ engineers and led the Snowflake practice POC
+                            for Beyond Key.</li>
+                        <li>Rebuilt an existing ADF extraction pipeline into a modular design so the team could add new
+                            sources without touching core logic.</li>
+                        <li>Built export tasks to push data out of Snowflake to downstream consumers.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Visual BI Solutions -->
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-role">Senior Data Engineer</div>
+                    <div class="exp-dates">June 2021 - June 2023</div>
+                </div>
+                <div class="exp-company">Visual BI Solutions (an Atos Company)</div>
+                <div class="exp-description">
+                    <ul>
+                        <li>Built Snowflake ETL pipelines with dbt across several client projects, using
+                            <strong>Data Vault</strong> or star schema depending on what each client needed for
+                            reporting.</li>
+                        <li>Wrote reusable macros for <strong>SCD Type 1 and Type 2</strong> across mixed column types,
+                            which removed per-table models and cut repeated code by around 60%.</li>
+                        <li>Tracked down a null primary key problem in left joins caused by late-arriving dimension
+                            records. Prototyped the fix, validated it with the client and put it into production.</li>
+                        <li>Worked with every dbt materialization (table, view, incremental, snapshot, ephemeral) and
+                            handled dbt version upgrades, testing impact before each one.</li>
+                        <li>Set up data quality testing with <strong>dbt-expectations</strong>, getting 95%+ coverage on
+                            critical models with checks for region filtering, row count matching and nulls.</li>
+                        <li>Optimized complex SQL using CTEs, window functions and recursive queries. Overrode global dbt
+                            macros so full-refresh could switch between truncate-reload and drop-recreate at runtime.
+                        </li>
+                        <li>Designed a recovery process to rebuild historical SCD data from raw sources when snapshots
+                            got corrupted, bringing recovery time down from days to under 4 hours.</li>
+                        <li>Built an <strong>RBAC automation tool</strong> with PowerApps, Power Automate and Azure
+                            Functions, replacing manual SQL provisioning with a self-service form and cutting
+                            provisioning time by around 80%.</li>
+                        <li>Built Power BI dashboards on warehouse credit usage, which let leadership spot 25%+ wasted
+                            compute and resize warehouses.</li>
+                        <li>Owned the Git branching strategy in Azure DevOps for a dbt project of around 200 models.</li>
+                        <li>Streamed MSFT stock prices through ADF every minute and stored the high for each 5-minute
+                            window in Azure SQL, as part of internal COE work.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tech Mahindra -->
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-role">Software Engineer</div>
+                    <div class="exp-dates">March 2018 - May 2021</div>
+                </div>
+                <div class="exp-company">Tech Mahindra Ltd.</div>
+                <div class="exp-description">
+                    <ul>
+                        <li>Built out the Snowflake data warehouse for the project and wrote the dbt and SQL
+                            transformation logic behind 50+ downstream reports.</li>
+                        <li>Ran 15+ data pipelines on <strong>SAP BW</strong> (ADSOs, DSOs, Composite Providers) and
+                            automated scheduling with Process Chains, cutting manual data prep by around 30%.</li>
+                        <li>Moved legacy reports to <strong>SAP HANA</strong> calculation views, which ran around 40%
+                            faster than the BW versions.</li>
+                        <li>Built Power BI dashboards with DAX and M Query for 3 business units, replacing weekly Excel
+                            reporting.</li>
+                        <li>Owned deployments across dev, QA and production. Kept 99%+ on-time delivery by watching
+                            Process Chains and fixing failures before they escalated.</li>
+                        <li>Wrote data cleansing scripts to standardize 10+ source tables with inconsistent formats,
+                            which cut downstream transformation failures.</li>
+                        <li>Coordinated transport management across all 3 environments, working with other teams to hit
+                            release windows.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CERTIFICATIONS ===== -->
+        <section class="section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-item"><a href="https://achieve.snowflake.com/0fe7fd00-0c96-4503-908d-1df4f78213c5"
+                    target="_blank">SnowPro Advanced Data Architect</a> - Snowflake</div>
+            <div class="cert-item"><a href="https://achieve.snowflake.com/cd98132a-0a79-47cd-a710-0c41a22da841"
+                    target="_blank">SnowPro Advanced Data Engineer</a> - Snowflake</div>
+            <div class="cert-item"><a
+                    href="https://www.credential.net/a39c25f7-a514-4357-8ca0-79639510331c#gs.1sjpn5"
+                    target="_blank">SnowPro Core Certification</a> - Snowflake</div>
+            <div class="cert-item"><a href="https://www.credential.net/3817bdfb-9b7c-4463-9edd-507c08e38008"
+                    target="_blank">dbt Developer Certification</a> - dbt Labs</div>
+            <div class="cert-item"><a
+                    href="https://www.credly.com/badges/e28844ae-156d-4cc6-b655-17e910f172fd?source=linked_in_profile"
+                    target="_blank">Microsoft Certified Data Analyst (DA-100)</a> - Microsoft</div>
+            <div class="cert-item"><a href="https://www.credly.com/badges/fdb81519-b8e9-4508-ad25-ed6d38cd6142"
+                    target="_blank">Azure Data Fundamentals (DP-900)</a> - Microsoft</div>
+        </section>
+
+        <!-- ===== EDUCATION ===== -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-item">
+                <span class="edu-degree">B. Tech</span> &ndash; <span class="edu-school">Kalyani Government Engineering
+                    College, Kalyani, West Bengal | 2013-2017 | 7.28 DGPA</span>
+            </div>
+            <div class="edu-item">
+                <span class="edu-degree">Higher Secondary</span> &ndash; <span class="edu-school">DAV Higher Secondary
+                    School, Asansol, West Bengal | 2011-2013 | 76%</span>
+            </div>
+            <div class="edu-item">
+                <span class="edu-degree">Madhyamik (Class 10)</span> &ndash; <span class="edu-school">DAV Higher
+                    Secondary School, Asansol, West Bengal | 2011 | 76%</span>
+            </div>
+        </section>
+
+        <!-- ===== RECOGNITION ===== -->
+        <section class="section">
+            <h2 class="section-title">Recognition</h2>
+            <div class="award-item"><strong>Star Performer Award (2x)</strong> for client solution delivery</div>
+            <div class="award-item"><strong>Pinnacle Award</strong> for on-time delivery and positive client feedback
+            </div>
+            <div class="award-item"><strong>PAT ON BACK Award</strong> for going above and beyond on project deadlines
+            </div>
+            <div class="award-item"><strong>Ninja Squad (2x)</strong> for technical problem-solving</div>
+            <div class="award-item"><strong>Eagle Squad</strong> for consistent team delivery</div>
+            <div class="award-item">Multiple client commendations for hands-on leadership</div>
+        </section>
+
+        <!-- ===== LANGUAGES ===== -->
+        <section class="section">
+            <h2 class="section-title">Languages</h2>
+            <p class="lang-text">English, Hindi</p>
+        </section>
+
+    </div>
+</body>
+
+</html>

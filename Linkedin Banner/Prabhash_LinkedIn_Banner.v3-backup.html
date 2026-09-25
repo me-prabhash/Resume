@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Banner - Prabhash Thakur</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #12121f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 18px;
+        }
+
+        .banner {
+            width: 1584px;
+            height: 396px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== City Background (unchanged) ===== */
+        .background {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg,
+                    rgba(15, 25, 45, 0.85) 0%,
+                    rgba(20, 35, 60, 0.75) 50%,
+                    rgba(10, 20, 40, 0.9) 100%),
+                linear-gradient(90deg,
+                    rgba(0, 0, 0, 0.3) 0%,
+                    transparent 30%,
+                    transparent 70%,
+                    rgba(0, 0, 0, 0.3) 100%);
+            background-color: #0a1628;
+        }
+
+        .city-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 280px;
+            background:
+                linear-gradient(to bottom, transparent 60%, rgba(20, 40, 70, 0.4) 60%) 0 0 / 80px 100%,
+                linear-gradient(to bottom, transparent 40%, rgba(25, 45, 75, 0.3) 40%) 70px 0 / 60px 100%,
+                linear-gradient(to bottom, transparent 55%, rgba(20, 40, 70, 0.35) 55%) 120px 0 / 45px 100%,
+                linear-gradient(to bottom, transparent 35%, rgba(30, 50, 80, 0.3) 35%) 160px 0 / 70px 100%,
+                linear-gradient(to bottom, transparent 50%, rgba(20, 40, 70, 0.4) 50%) 220px 0 / 55px 100%,
+                linear-gradient(to bottom, transparent 65%, rgba(25, 45, 75, 0.35) 65%) 270px 0 / 40px 100%,
+                linear-gradient(to bottom, transparent 45%, rgba(20, 40, 70, 0.3) 45%) 305px 0 / 65px 100%,
+                linear-gradient(to bottom, transparent 30%, rgba(30, 55, 85, 0.35) 30%) 360px 0 / 50px 100%,
+                linear-gradient(to bottom, transparent 55%, rgba(20, 40, 70, 0.4) 55%) 400px 0 / 75px 100%,
+                linear-gradient(to bottom, transparent 42%, rgba(25, 50, 80, 0.3) 42%) 465px 0 / 55px 100%,
+                linear-gradient(to bottom, transparent 60%, rgba(20, 40, 70, 0.35) 60%) 510px 0 / 45px 100%,
+                linear-gradient(to bottom, transparent 38%, rgba(30, 55, 85, 0.3) 38%) 545px 0 / 70px 100%,
+                linear-gradient(to bottom, transparent 52%, rgba(20, 40, 70, 0.4) 52%) 605px 0 / 60px 100%,
+                linear-gradient(to bottom, transparent 48%, rgba(25, 45, 75, 0.35) 48%) 655px 0 / 50px 100%,
+                linear-gradient(to bottom, transparent 58%, rgba(20, 40, 70, 0.3) 58%) 695px 0 / 65px 100%;
+            background-repeat: no-repeat;
+        }
+
+        .city-lights {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background-image:
+                radial-gradient(1px 1px at 50px 120px, rgba(255, 200, 100, 0.8), transparent),
+                radial-gradient(1px 1px at 85px 140px, rgba(255, 220, 150, 0.6), transparent),
+                radial-gradient(1px 1px at 120px 100px, rgba(200, 220, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 180px 130px, rgba(255, 200, 100, 0.5), transparent),
+                radial-gradient(1px 1px at 220px 90px, rgba(255, 220, 150, 0.8), transparent),
+                radial-gradient(1px 1px at 280px 150px, rgba(200, 220, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 350px 110px, rgba(255, 200, 100, 0.7), transparent),
+                radial-gradient(1px 1px at 420px 135px, rgba(255, 220, 150, 0.5), transparent),
+                radial-gradient(1px 1px at 500px 95px, rgba(200, 220, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 580px 125px, rgba(255, 200, 100, 0.6), transparent),
+                radial-gradient(1px 1px at 650px 145px, rgba(255, 220, 150, 0.7), transparent),
+                radial-gradient(1px 1px at 720px 105px, rgba(200, 220, 255, 0.5), transparent),
+                radial-gradient(2px 2px at 800px 80px, rgba(255, 150, 50, 0.9), transparent),
+                radial-gradient(1px 1px at 880px 130px, rgba(255, 200, 100, 0.6), transparent),
+                radial-gradient(1px 1px at 950px 100px, rgba(255, 220, 150, 0.8), transparent),
+                radial-gradient(1px 1px at 1020px 140px, rgba(200, 220, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 1100px 115px, rgba(255, 200, 100, 0.5), transparent),
+                radial-gradient(1px 1px at 1180px 90px, rgba(255, 220, 150, 0.6), transparent),
+                radial-gradient(1px 1px at 1250px 135px, rgba(200, 220, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 1320px 105px, rgba(255, 200, 100, 0.7), transparent),
+                radial-gradient(1px 1px at 1400px 125px, rgba(255, 220, 150, 0.5), transparent),
+                radial-gradient(1px 1px at 1480px 95px, rgba(200, 220, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 1550px 145px, rgba(255, 200, 100, 0.8), transparent);
+        }
+
+        /* ===== NEW: Tech grid overlay ===== */
+        .tech-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(41, 181, 232, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(41, 181, 232, 0.055) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse 65% 85% at 42% 62%, #000 20%, transparent 78%);
+            -webkit-mask-image: radial-gradient(ellipse 65% 85% at 42% 62%, #000 20%, transparent 78%);
+        }
+
+        /* ===== NEW: Drifting data streams ===== */
+        .data-streams {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            opacity: 0.55;
+        }
+
+        .stream {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #29b5e8, transparent);
+            animation: streamDrift 7s linear infinite;
+        }
+
+        .stream:nth-child(1) { top: 62px;  width: 190px; animation-duration: 8s;    animation-delay: 0s; }
+        .stream:nth-child(2) { top: 138px; width: 260px; animation-duration: 11s;   animation-delay: -3s; }
+        .stream:nth-child(3) { top: 236px; width: 150px; animation-duration: 9.5s;  animation-delay: -6s; }
+        .stream:nth-child(4) { top: 318px; width: 300px; animation-duration: 13s;   animation-delay: -1.5s; }
+        .stream:nth-child(5) { top: 92px;  width: 120px; animation-duration: 10s;   animation-delay: -8s; }
+
+        @keyframes streamDrift {
+            0%   { left: -320px; opacity: 0; }
+            12%  { opacity: 0.9; }
+            88%  { opacity: 0.9; }
+            100% { left: 1584px; opacity: 0; }
+        }
+
+        /* ===== Content ===== */
+        .content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+        }
+
+        /* Left 300px stays clear for the LinkedIn profile photo overlay */
+
+        /* ===== Figure (SVG silhouette) ===== */
+        .figure {
+            position: absolute;
+            left: 288px;
+            top: 88px;
+            width: 300px;
+            height: 308px;
+        }
+
+        .figure svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .fig-stroke {
+            fill: none;
+            stroke: #7fdbfa;
+            stroke-width: 2.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: url(#figGlow);
+            animation: figPulse 4.2s ease-in-out infinite;
+        }
+
+        .fig-body {
+            fill: url(#bodyFill);
+            stroke: #7fdbfa;
+            stroke-width: 2.6;
+            stroke-linejoin: round;
+            filter: url(#figGlow);
+            animation: figPulse 4.2s ease-in-out infinite;
+        }
+
+        .fig-accent {
+            fill: none;
+            stroke: rgba(170, 235, 255, 0.55);
+            stroke-width: 1.2;
+            stroke-linecap: round;
+        }
+
+        .fig-dot {
+            fill: rgba(170, 235, 255, 0.85);
+            stroke: none;
+        }
+
+        @keyframes figPulse {
+            0%, 100% { opacity: 0.88; }
+            50%      { opacity: 1; }
+        }
+
+        /* ===== Palm energy ===== */
+        .palm-glow {
+            position: absolute;
+            left: 432px;
+            top: 126px;
+            width: 146px;
+            height: 146px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                    rgba(41, 181, 232, 0.5) 0%,
+                    rgba(41, 181, 232, 0.2) 38%,
+                    transparent 70%);
+            animation: palmBreathe 3.4s ease-in-out infinite;
+        }
+
+        @keyframes palmBreathe {
+            0%, 100% { transform: scale(0.94); opacity: 0.8; }
+            50%      { transform: scale(1.06); opacity: 1; }
+        }
+
+        .palm-ring {
+            position: absolute;
+            left: 461px;
+            top: 155px;
+            width: 88px;
+            height: 88px;
+            border: 1.5px solid rgba(127, 219, 250, 0.55);
+            border-radius: 50%;
+            animation: ringExpand 3.6s ease-out infinite;
+        }
+
+        .palm-ring.r2 { animation-delay: 1.2s; }
+        .palm-ring.r3 { animation-delay: 2.4s; }
+
+        @keyframes ringExpand {
+            0%   { transform: scale(0.4); opacity: 0; }
+            25%  { opacity: 0.8; }
+            100% { transform: scale(1.7); opacity: 0; }
+        }
+
+        /* Particles rising off the palm */
+        .particles {
+            position: absolute;
+            left: 452px;
+            top: 42px;
+            width: 110px;
+            height: 158px;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            bottom: 0;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #a8e8ff;
+            box-shadow: 0 0 6px #29b5e8;
+            animation: particleRise 4s ease-out infinite;
+        }
+
+        .particle:nth-child(1) { left: 18px; animation-delay: 0s;    animation-duration: 4.2s; }
+        .particle:nth-child(2) { left: 44px; animation-delay: -0.9s; animation-duration: 3.6s; }
+        .particle:nth-child(3) { left: 66px; animation-delay: -1.8s; animation-duration: 4.6s; }
+        .particle:nth-child(4) { left: 32px; animation-delay: -2.6s; animation-duration: 3.9s; }
+        .particle:nth-child(5) { left: 80px; animation-delay: -3.3s; animation-duration: 4.4s; }
+        .particle:nth-child(6) { left: 56px; animation-delay: -1.3s; animation-duration: 5s; }
+
+        @keyframes particleRise {
+            0%   { transform: translateY(0) scale(0.6);      opacity: 0; }
+            15%  { opacity: 1; }
+            70%  { opacity: 0.7; }
+            100% { transform: translateY(-140px) scale(0.2);  opacity: 0; }
+        }
+
+        /* ===== Hologram projection beams: palm -> badges ===== */
+        .beams {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .beams line {
+            stroke: url(#beamFade);
+            stroke-width: 1.3;
+            animation: beamFlicker 3s ease-in-out infinite;
+        }
+
+        .beams line:nth-child(2) { animation-delay: 0.4s; }
+        .beams line:nth-child(3) { animation-delay: 0.8s; }
+        .beams line:nth-child(4) { animation-delay: 1.2s; }
+
+        @keyframes beamFlicker {
+            0%, 100% { opacity: 0.32; }
+            50%      { opacity: 0.72; }
+        }
+
+        /* ===== Certification badges (arc above the palm) ===== */
+        .cert-badge {
+            position: absolute;
+            width: 108px;
+            height: 108px;
+            border-radius: 12px;
+            padding: 7px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(111, 212, 245, 0.28);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45),
+                        0 0 22px rgba(41, 181, 232, 0.22);
+            animation: badgeFloat 5s ease-in-out infinite;
+        }
+
+        .cert-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(41, 181, 232, 0.4));
+        }
+
+        /* Arc: rises off the palm and sweeps right */
+        .cert-badge.b1 { left: 566px; top: 134px; --rot: -10deg; animation-delay: 0s;    }
+        .cert-badge.b2 { left: 684px; top: 100px; --rot: -4deg;  animation-delay: -1.2s; }
+        .cert-badge.b3 { left: 802px; top: 96px;  --rot: 3deg;   animation-delay: -2.4s; }
+        .cert-badge.b4 { left: 920px; top: 122px; --rot: 9deg;   animation-delay: -3.6s; }
+
+        @keyframes badgeFloat {
+            0%, 100% { transform: translateY(0)     rotate(var(--rot)); }
+            50%      { transform: translateY(-11px) rotate(var(--rot)); }
+        }
+
+        /* ===== Name / Title ===== */
+        .name-block {
+            position: absolute;
+            right: 50px;
+            top: 138px;
+            text-align: right;
+        }
+
+        .name-line {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 44px;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 1.04;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+                         0 0 34px rgba(41, 181, 232, 0.2);
+        }
+
+        .title {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #29b5e8;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 10px;
+        }
+
+        .title-rule {
+            height: 1px;
+            width: 100%;
+            margin-top: 11px;
+            background: linear-gradient(90deg, transparent, rgba(41, 181, 232, 0.75));
+        }
+
+        .tagline {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: rgba(200, 228, 245, 0.72);
+            text-transform: uppercase;
+            letter-spacing: 2.2px;
+            margin-top: 11px;
+        }
+
+        /* ===== Contact (top right) ===== */
+        .contact-info {
+            position: absolute;
+            right: 50px;
+            top: 26px;
+            text-align: right;
+        }
+
+        .email-row,
+        .linkedin-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .email-row { margin-bottom: 6px; }
+
+        .email-icon,
+        .linkedin-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .email-icon {
+            background: linear-gradient(135deg, #29b5e8 0%, #1a8cba 100%);
+        }
+
+        .linkedin-icon {
+            background: #0077b5;
+        }
+
+        .email-icon svg,
+        .linkedin-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        .email-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .linkedin-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== Freeze mode for clean screenshots ===== */
+        body.frozen .banner *,
+        body.frozen .banner {
+            animation-play-state: paused !important;
+        }
+
+        /* ===== Controls / instructions (not part of the banner) ===== */
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(0, 0, 0, 0.82);
+            color: #fff;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 13.5px;
+            text-align: center;
+        }
+
+        .controls strong { color: #29b5e8; }
+
+        .controls button {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #0a1628;
+            background: #29b5e8;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .controls button:hover { background: #4fc6f2; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .banner *, .banner { animation: none !important; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <!-- Background -->
+        <div class="background"></div>
+        <div class="city-silhouette"></div>
+        <div class="city-lights"></div>
+        <div class="tech-grid"></div>
+        <div class="data-streams">
+            <div class="stream"></div>
+            <div class="stream"></div>
+            <div class="stream"></div>
+            <div class="stream"></div>
+            <div class="stream"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Hologram beams from palm to each badge -->
+            <svg class="beams" width="1584" height="396" aria-hidden="true">
+                <defs>
+                    <linearGradient id="beamFade" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%"   stop-color="#29b5e8" stop-opacity="0.85" />
+                        <stop offset="100%" stop-color="#29b5e8" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+                <line x1="505" y1="200" x2="620" y2="188" />
+                <line x1="505" y1="200" x2="738" y2="154" />
+                <line x1="505" y1="200" x2="856" y2="150" />
+                <line x1="505" y1="200" x2="974" y2="176" />
+            </svg>
+
+            <!-- Figure: stylized glowing bust, arm raised, palm open and presenting -->
+            <div class="figure">
+                <svg viewBox="0 0 300 308" aria-label="Stylized figure presenting certifications on an open palm">
+                    <defs>
+                        <filter id="figGlow" x="-60%" y="-60%" width="220%" height="220%">
+                            <feGaussianBlur stdDeviation="3.4" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <linearGradient id="bodyFill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%"   stop-color="rgba(30, 86, 132, 0.62)" />
+                            <stop offset="55%"  stop-color="rgba(18, 52, 88, 0.48)" />
+                            <stop offset="100%" stop-color="rgba(10, 28, 52, 0.05)" />
+                        </linearGradient>
+                        <!-- Fades the bottom of the figure into the background -->
+                        <linearGradient id="fadeOut" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%"   stop-color="#fff" stop-opacity="1" />
+                            <stop offset="62%"  stop-color="#fff" stop-opacity="1" />
+                            <stop offset="100%" stop-color="#fff" stop-opacity="0" />
+                        </linearGradient>
+                        <mask id="figFade">
+                            <rect x="0" y="0" width="300" height="308" fill="url(#fadeOut)" />
+                        </mask>
+                    </defs>
+
+                    <g mask="url(#figFade)">
+                        <!-- Torso: shoulders tapering gently inward, fading out at the bottom -->
+                        <path class="fig-body"
+                            d="M52 104
+                               Q60 92 82 87
+                               L96 87
+                               Q120 93 128 106
+                               L130 182
+                               L123 300
+                               L57 300
+                               L52 182
+                               Z" />
+
+                        <!-- Far arm, tucked behind the torso -->
+                        <path class="fig-stroke"
+                            d="M54 110 Q34 152 30 200" />
+
+                        <!-- Neck -->
+                        <path class="fig-stroke" d="M84 74 L84 89" />
+
+                        <!-- Head -->
+                        <circle class="fig-body" cx="84" cy="44" r="29" />
+                        <!-- Hair / crown accent -->
+                        <path class="fig-accent" d="M58 34 Q84 8 110 34" />
+
+                        <!-- Raised arm: shoulder -> elbow -> wrist, forearm angled up -->
+                        <path class="fig-stroke"
+                            d="M126 108 Q160 128 178 152" />
+                        <path class="fig-stroke"
+                            d="M178 152 Q196 132 208 118" />
+
+                        <!-- Open palm, fingers spread upward -->
+                        <path class="fig-body"
+                            d="M198 124
+                               Q204 110 218 110
+                               Q230 111 229 124
+                               Q216 134 203 132
+                               Z" />
+                        <path class="fig-stroke" d="M203 114 L198 100" />
+                        <path class="fig-stroke" d="M211 109 L209  94" />
+                        <path class="fig-stroke" d="M220 109 L224  95" />
+                        <path class="fig-stroke" d="M227 114 L235 103" />
+
+                        <!-- Circuit accents on the torso -->
+                        <path class="fig-accent" d="M70 130 L96 130 L96 152 L120 152" />
+                        <path class="fig-accent" d="M64 170 L88 170 L88 188" />
+                        <path class="fig-accent" d="M108 176 L128 176" />
+                        <circle class="fig-dot" cx="96"  cy="130" r="2.6" />
+                        <circle class="fig-dot" cx="88"  cy="188" r="2.6" />
+                        <circle class="fig-dot" cx="128" cy="176" r="2.6" />
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Palm energy -->
+            <div class="palm-glow"></div>
+            <div class="palm-ring"></div>
+            <div class="palm-ring r2"></div>
+            <div class="palm-ring r3"></div>
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+
+            <!-- Certification badges, arcing up off the palm -->
+            <div class="cert-badge b1">
+                <img src="certification/18a2a71f-2b09-4889-a671-9d3b98335203.png"
+                     alt="SnowPro Advanced Architect">
+            </div>
+            <div class="cert-badge b2">
+                <img src="certification/132cace9-1fbb-4515-9143-b0fadea70bbe.png"
+                     alt="SnowPro Advanced Data Engineer">
+            </div>
+            <div class="cert-badge b3">
+                <img src="certification/43f88c4e-b3be-4acb-8c06-7be8fe4a2007.png"
+                     alt="SnowPro Core">
+            </div>
+            <div class="cert-badge b4">
+                <img src="certification/abd422e6-dc3a-42b5-a1db-6dd47bc722c6.png"
+                     alt="dbt Developer">
+            </div>
+
+            <!-- Contact -->
+            <div class="contact-info">
+                <div class="email-row">
+                    <div class="email-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                    </div>
+                    <span class="email-text">thakurprabhash80@gmail.com</span>
+                </div>
+                <div class="linkedin-row">
+                    <div class="linkedin-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                        </svg>
+                    </div>
+                    <span class="linkedin-text">@imprabhash</span>
+                </div>
+            </div>
+
+            <!-- Name / Title -->
+            <div class="name-block">
+                <div class="name-line">Prabhash</div>
+                <div class="name-line">Thakur</div>
+                <div class="title">Senior Lead Engineer</div>
+                <div class="title-rule"></div>
+                <div class="tagline">Snowflake &middot; dbt &middot; Cortex AI &middot; Data Mesh</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="controls">
+        <span><strong>Screenshot:</strong> DevTools &rarr; Ctrl+Shift+P &rarr; "Capture node screenshot" on <strong>.banner</strong></span>
+        <button id="freeze-btn" type="button">Freeze animation</button>
+    </div>
+
+    <script>
+        document.getElementById('freeze-btn').addEventListener('click', function () {
+            var frozen = document.body.classList.toggle('frozen');
+            this.textContent = frozen ? 'Resume animation' : 'Freeze animation';
+        });
+    </script>
+</body>
+
+</html>
