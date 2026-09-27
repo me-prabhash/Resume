@@ -35,14 +35,14 @@
             max-width: 850px;
             margin: 0 auto;
             background: #ffffff;
-            padding: 30px 42px 34px;
+            padding: 24px 42px 28px;
         }
 
         /* ===== HEADER ===== */
         .header {
-            padding-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 2px solid var(--accent);
-            margin-bottom: 18px;
+            margin-bottom: 14px;
         }
 
         .name {
@@ -79,7 +79,7 @@
 
         /* ===== SECTIONS ===== */
         .section {
-            margin-bottom: 17px;
+            margin-bottom: 14px;
         }
 
         .section:last-child {
@@ -95,7 +95,7 @@
             letter-spacing: 1.5px;
             padding-bottom: 3px;
             border-bottom: 1px solid var(--border-light);
-            margin-bottom: 9px;
+            margin-bottom: 7px;
         }
 
         /* ===== SUMMARY ===== */
@@ -124,7 +124,7 @@
 
         /* ===== EXPERIENCE ===== */
         .experience-item {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .experience-item:last-child {
@@ -255,12 +255,24 @@
             }
 
             .experience-item {
-                break-inside: avoid;
+                break-inside: auto;
             }
 
             .exp-header,
             .exp-company {
-                break-after: avoid;
+                break-inside: avoid;
+            }
+
+            .exp-header + .exp-company {
+                break-before: avoid;
+            }
+
+            .exp-company + .exp-description {
+                break-before: avoid;
+            }
+
+            .exp-description li:first-child {
+                break-before: avoid;
             }
 
             .section-title {
@@ -269,7 +281,7 @@
         }
 
         @page {
-            margin: 12mm 12mm;
+            margin: 10mm 12mm;
             size: A4;
         }
     </style>
@@ -480,13 +492,13 @@
             <h2 class="section-title">Certifications</h2>
             <div class="cert-item"><a href="https://achieve.snowflake.com/0fe7fd00-0c96-4503-908d-1df4f78213c5"
                     target="_blank">SnowPro Advanced Data Architect</a> - Snowflake</div>
+            <div class="cert-item"><a href="https://www.credential.net/3817bdfb-9b7c-4463-9edd-507c08e38008"
+                    target="_blank">dbt Developer Certification</a> - dbt Labs</div>
             <div class="cert-item"><a href="https://achieve.snowflake.com/cd98132a-0a79-47cd-a710-0c41a22da841"
                     target="_blank">SnowPro Advanced Data Engineer</a> - Snowflake</div>
             <div class="cert-item"><a
                     href="https://www.credential.net/a39c25f7-a514-4357-8ca0-79639510331c#gs.1sjpn5"
                     target="_blank">SnowPro Core Certification</a> - Snowflake</div>
-            <div class="cert-item"><a href="https://www.credential.net/3817bdfb-9b7c-4463-9edd-507c08e38008"
-                    target="_blank">dbt Developer Certification</a> - dbt Labs</div>
             <div class="cert-item"><a
                     href="https://www.credly.com/badges/e28844ae-156d-4cc6-b655-17e910f172fd?source=linked_in_profile"
                     target="_blank">Microsoft Certified Data Analyst (DA-100)</a> - Microsoft</div>
