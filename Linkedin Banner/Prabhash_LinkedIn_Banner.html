@@ -114,27 +114,14 @@
             z-index: 10;
             height: 100%;
             display: flex;
-            padding: 25px 50px;
-        }
-
-        /* Left Section - Empty space for profile pic */
-        .left-section {
-            width: 300px;
-            flex-shrink: 0;
-        }
-
-        /* Right Section - Contact and Certifications */
-        .right-section {
-            flex: 1;
-            display: flex;
             flex-direction: column;
             justify-content: space-between;
-            align-items: flex-end;
-            text-align: right;
+            padding: 14px 24px 18px;
         }
 
         /* Contact Info */
         .contact-info {
+            align-self: flex-end;
             text-align: right;
         }
 
@@ -227,16 +214,18 @@
             letter-spacing: 3px;
         }
 
-        /* Certifications */
+        /* Certifications sit along the top, clear of the profile photo */
         .certifications {
             display: flex;
+            justify-content: center;
+            align-items: flex-start;
             gap: 35px;
-            align-items: center;
         }
 
         .cert-badge {
             width: 205px;
             height: 205px;
+            flex-shrink: 0;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
@@ -286,12 +275,29 @@
 
         <!-- Content -->
         <div class="content">
-            <!-- Left Section - Space for profile pic -->
-            <div class="left-section"></div>
+                <!-- Certifications along the top -->
+                <div class="certifications">
+                    <div class="cert-badge">
+                        <img src="certification/snowpro-genai.png" alt="SnowPro Specialty: Gen AI">
+                    </div>
+                    <div class="cert-badge">
+                        <img src="certification/18a2a71f-2b09-4889-a671-9d3b98335203.png" alt="SnowPro Advanced Architect">
+                    </div>
+                    <div class="cert-badge">
+                        <img src="certification/abd422e6-dc3a-42b5-a1db-6dd47bc722c6.png" alt="dbt Developer">
+                    </div>
+                    <div class="cert-badge">
+                        <img src="certification/132cace9-1fbb-4515-9143-b0fadea70bbe.png" alt="SnowPro Advanced Data Engineer">
+                    </div>
+                    <div class="cert-badge">
+                        <img src="certification/43f88c4e-b3be-4acb-8c06-7be8fe4a2007.png" alt="SnowPro Core">
+                    </div>
+                    <div class="cert-badge">
+                        <img src="certification/astronomer-airflow-3-fundamentals.png" alt="Astronomer Certification for Apache Airflow 3 Fundamentals">
+                    </div>
+                </div>
 
-            <!-- Right Section - Contact and Certifications -->
-            <div class="right-section">
-                <!-- Contact Info -->
+                <!-- Contact stays bottom-right, clear of the profile photo -->
                 <div class="contact-info">
                     <div class="email-row">
                         <div class="email-icon">
@@ -310,26 +316,6 @@
                         <span class="linkedin-text">@imprabhash</span>
                     </div>
                 </div>
-
-                <!-- Certifications -->
-                <div class="certifications">
-                    <div class="cert-badge">
-                        <img src="certification/snowpro-genai.png" alt="SnowPro Specialty: Gen AI">
-                    </div>
-                    <div class="cert-badge">
-                        <img src="certification/18a2a71f-2b09-4889-a671-9d3b98335203.png" alt="SnowPro Advanced Architect">
-                    </div>
-                    <div class="cert-badge">
-                        <img src="certification/abd422e6-dc3a-42b5-a1db-6dd47bc722c6.png" alt="dbt Developer">
-                    </div>
-                    <div class="cert-badge">
-                        <img src="certification/132cace9-1fbb-4515-9143-b0fadea70bbe.png" alt="SnowPro Advanced Data Engineer">
-                    </div>
-                    <div class="cert-badge">
-                        <img src="certification/43f88c4e-b3be-4acb-8c06-7be8fe4a2007.png" alt="SnowPro Core">
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
