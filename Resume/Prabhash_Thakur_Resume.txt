@@ -1,0 +1,90 @@
+Prabhash Thakur
+Senior Data Engineer | Snowflake, dbt & Data Architecture
++91 8759480218 | thakurprabhash80@gmail.com | linkedin.com/in/imprabhash
+
+PROFESSIONAL SUMMARY
+Snowflake and dbt specialist with 8+ years in data engineering and analytics. Experience includes client project architecture, ETL/ELT pipelines, Data Mesh, data quality and access controls.
+
+SKILLS
+Data Platforms: Snowflake, dbt, SQL, Python, Azure Data Factory, Databricks, Azure Data Lake, AWS S3, Airflow, Jinja, ETL/ELT Pipeline Design, Data Warehouse Architecture
+Architecture & Governance: Data Mesh, Medallion Architecture, Data Vault Modeling, Dimensional Modeling, Star Schema, Data Quality Frameworks, dbt-expectations, Row-Level Security (RLS), Role-Based Access Control (RBAC), Dynamic Data Masking, Data Governance, Data Lineage, CI/CD for dbt, Azure DevOps, Git
+Reporting & Automation: Power BI, DAX, M Query, Power Automate, PowerApps, Azure Logic Apps, Azure Functions, SAP BW, SAP HANA
+Leadership & Delivery: Team Leadership, Mentoring, Stakeholder Management, Sprint Planning, Code Reviews
+Snowflake AI: Cortex Search, Cortex Analyst, Cortex Agents, Cortex LLM Functions, AI_PARSE_DOCUMENT, Document AI, Cortex Fine-Tuning, Retrieval-Augmented Generation (RAG), Streamlit in Snowflake
+
+WORK EXPERIENCE
+
+Senior Lead Engineer
+KIPI.AI
+July 2025 - Present
+- Work on Data Mesh in Snowflake as an individual contributor for KIPI's largest client, supporting data products across 5+ domains serving around 200 users.
+- Cut ingestion compute costs by 60% for over 1 TB daily through incremental loads, micro-batching and revised slowly changing dimension (SCD) Type 2 logic, moving from an L to an XS warehouse.
+- Wrote dbt macros to purge stale snapshots automatically, cutting storage and processing overhead by around 40%.
+- Established coding standards, pull request reviews, Git branching rules and naming conventions.
+- Applied Snowflake Row-Level Security (RLS) and developed a personally identifiable information (PII) scanner to flag missing RLS or masking policies across data products and alert domain owners.
+- Created a dbt audit package from scratch with metadata discovery, batched SQL checks, pass/fail results and 90-day retention to flag Snowflake account data missing row access policies.
+- Implemented the dbt-expectations data quality layer and continue to expand governance as new domains join.
+- Run weekly code walkthroughs and sessions on architecture and development practices.
+- Used Cortex Search and COMPLETE for RAG Q&A, and Document AI and AI_PARSE_DOCUMENT for extraction.
+- Worked with Cortex Analyst for natural-language queries, Cortex LLM functions for classification, sentiment analysis and information extraction, and Cortex Fine-Tuning for model customization.
+
+Senior Technical Lead
+Beyond Key
+June 2023 - July 2025
+- Designed three client project architectures: logistics on Snowflake, a Databricks project and a pet insurance project.
+- Delivered a Snowflake migration for a logistics company and led the client project team.
+- Implemented dbt from scratch and designed its transformation architecture.
+- Developed Snowflake and dbt ETL pipelines with Azure Data Factory (ADF) to extract source data and automate stage and table creation.
+- Wrote dbt macros for failed-model error logs and insert/update timestamps, plus relationship tests for referential integrity.
+- Automated stage and pipe creation through Snowflake JavaScript procedures using configuration entries.
+- Redesigned ADF extraction pipelines for simpler, more flexible processing.
+- Configured Snowflake shares for vendors and created export tasks.
+- Led an internal proof of concept for Beyond Key's Snowflake practice and delivered internal Snowflake and dbt training.
+- Learned and tested Cortex Search, Cortex Analyst and Cortex Agents.
+
+Senior Data Engineer
+Visual BI Solutions (an Atos Company)
+June 2021 - June 2023
+- Delivered Snowflake and dbt ETL solutions and wrote reusable SCD Type 1 and Type 2 macros, including tables with both column types.
+- Prototyped and implemented a client solution for null primary keys from late-arriving records on the right side of left joins.
+- Created and enhanced table, view, incremental and ephemeral models, plus snapshots; tested existing code during dbt upgrades.
+- Added dbt tests for region filters and source-to-target row counts; managed code versions in Azure DevOps Git.
+- Implemented a process to rebuild historical changes and recover from data loss.
+- Used SQL common table expressions (CTEs) to cleanse and transform data and create tables.
+- Overrode global dbt macros to select drop/recreate or truncate/reload during full-refresh using a variable.
+- Automated Snowflake user and role creation with PowerApps, Power Automate and Azure Functions for internal Center of Excellence (COE) work.
+- Produced a COE Power BI report for Snowflake warehouse usage recommendations.
+- Completed corporate ADF training and created an internal COE pipeline to ingest MSFT stock prices every minute and store each 5-minute high in Azure SQL.
+- Used basic Python file handling for daily dbt tasks.
+
+Software Engineer
+Tech Mahindra Ltd.
+March 2018 - May 2021
+- Worked with Snowflake as part of data engineering work.
+- Implemented SAP BW data cleansing using ADSOs, DSOs and Composite Providers.
+- Created calculation views for complex data processing requirements.
+- Developed and updated Power BI dashboards.
+- Used M Query for data preparation, complex calculations and joins.
+- Wrote DAX calculations for Power BI reports.
+- Automated data processing with SAP BW Process Chains and monitored their execution.
+- Transported data flows to production using change requests and transport requests.
+
+CERTIFICATIONS
+- SnowPro Specialty: Gen AI Certification - Snowflake
+- SnowPro Advanced Data Architect - Snowflake
+- dbt Developer Certification - dbt Labs
+- SnowPro Advanced Data Engineer - Snowflake
+- SnowPro Core Certification - Snowflake
+- Astronomer Certification for Apache Airflow 3 Fundamentals - Astronomer
+- Microsoft Certified Data Analyst (DA-100) - Microsoft
+- Azure Data Fundamentals (DP-900) - Microsoft
+
+EDUCATION
+Bachelor of Technology (B.Tech) – Kalyani Government Engineering College, Kalyani, West Bengal | 2013-2017 | 7.28 DGPA
+
+RECOGNITION
+- Star Performer Award (2x), Pinnacle Award and PAT ON BACK Award for client delivery.
+- Ninja Squad (2x) and Eagle Squad recognition for technical problem-solving and team delivery; multiple client commendations for leadership.
+
+LANGUAGES
+English, Hindi

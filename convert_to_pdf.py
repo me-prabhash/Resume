@@ -44,7 +44,7 @@ class ResumeHTMLParser(HTMLParser):
             'contact': '',
             'summary': '',
             'skills': [],        # list of (label, text)
-            'experience': [],    # list of {role, dates, company, bullets:[{text, bold_phrases:[]}]}
+            'experience': [],    # bullets include text, bold_phrases and page_break_before
             'certifications': [],  # list of {name, issuer, url}
             'education': [],     # list of raw text strings
             'recognition': [],   # list of {text, bold_phrases:[]}
@@ -59,6 +59,7 @@ class ResumeHTMLParser(HTMLParser):
         self._in_li = False
         self._li_text = ''
         self._li_bold_phrases = []
+        self._li_page_break_before = False
         self._in_strong = False
         self._strong_text = ''
         self._in_skills_row = False
@@ -112,6 +113,7 @@ class ResumeHTMLParser(HTMLParser):
             self._in_li = True
             self._li_text = ''
             self._li_bold_phrases = []
+            self._li_page_break_before = attrs_dict.get('data-page-break') == 'before'
         elif tag == 'strong':
             self._in_strong = True
             self._strong_text = ''
@@ -189,6 +191,7 @@ class ResumeHTMLParser(HTMLParser):
                 self._current_exp['bullets'].append({
                     'text': _normalize_whitespace(self._li_text),
                     'bold_phrases': self._li_bold_phrases[:],
+                    'page_break_before': self._li_page_break_before,
                 })
         elif tag == 'strong':
             self._in_strong = False
@@ -318,26 +321,32 @@ def convert_html_to_pdf(html_path, pdf_path):
 
 def convert_html_to_docx(html_path, docx_path):
     from docx import Document
-    from docx.shared import Pt, Inches, RGBColor
-    from docx.enum.text import WD_ALIGN_PARAGRAPH
+    from docx.shared import Pt, Mm, RGBColor
+    from docx.oxml.ns import qn
 
     data = parse_html_resume(html_path)
 
     doc = Document()
+    title_properties = doc.styles['Title'].element.find(qn('w:pPr'))
+    if title_properties is not None:
+        for border in list(title_properties.findall(qn('w:pBdr'))):
+            title_properties.remove(border)
 
     # Page margins
     for section in doc.sections:
-        section.top_margin = Inches(0.5)
-        section.bottom_margin = Inches(0.5)
-        section.left_margin = Inches(0.6)
-        section.right_margin = Inches(0.6)
+        section.page_width = Mm(210)
+        section.page_height = Mm(297)
+        section.top_margin = Mm(10)
+        section.bottom_margin = Mm(10)
+        section.left_margin = Mm(12)
+        section.right_margin = Mm(12)
 
     ACCENT = RGBColor(0x16, 0x32, 0x5C)
     TEXT_DARK = RGBColor(0x11, 0x11, 0x11)
     TEXT_MEDIUM = RGBColor(0x2B, 0x2B, 0x2B)
     TEXT_LIGHT = RGBColor(0x5A, 0x5A, 0x5A)
-    FONT_BODY = 'Calibri'
-    FONT_HEADING = 'Calibri'
+    FONT_BODY = 'Arial'
+    FONT_HEADING = 'Arial'
 
     def set_spacing(paragraph, before=0, after=0, line=None):
         fmt = paragraph.paragraph_format
@@ -346,17 +355,16 @@ def convert_html_to_docx(html_path, docx_path):
         if line is not None:
             fmt.line_spacing = Pt(line)
 
-    def add_separator(doc):
-        p = doc.add_paragraph()
-        set_spacing(p, before=4, after=4)
-        run = p.add_run('\u2500' * 80)
-        run.font.size = Pt(6)
-        run.font.color.rgb = RGBColor(0xCF, 0xCF, 0xCF)
+    normal = doc.styles['Normal']
+    normal.font.name = FONT_BODY
+    normal.font.size = Pt(9.5)
+    normal.paragraph_format.line_spacing = Pt(12.35)
+    normal.paragraph_format.space_after = Pt(0)
 
     def add_section_heading(doc, text):
-        add_separator(doc)
-        p = doc.add_paragraph()
-        set_spacing(p, before=2, after=4)
+        p = doc.add_paragraph(style='Heading 1')
+        set_spacing(p, before=8, after=4, line=14)
+        p.paragraph_format.keep_with_next = True
         run = p.add_run(text.upper())
         run.font.name = FONT_HEADING
         run.font.size = Pt(11)
@@ -365,7 +373,8 @@ def convert_html_to_docx(html_path, docx_path):
 
     def add_bullet(doc, text, bold_phrases=None):
         p = doc.add_paragraph(style='List Bullet')
-        set_spacing(p, before=0, after=1, line=14)
+        set_spacing(p, before=0, after=1, line=12.35)
+        p.paragraph_format.keep_together = True
         if bold_phrases:
             remaining = text
             for phrase in bold_phrases:
@@ -396,7 +405,7 @@ def convert_html_to_docx(html_path, docx_path):
         return p
 
     # --- HEADER ---
-    p = doc.add_paragraph()
+    p = doc.add_paragraph(style='Title')
     set_spacing(p, before=0, after=0)
     run = p.add_run(data['name'])
     run.font.name = FONT_HEADING
@@ -422,7 +431,7 @@ def convert_html_to_docx(html_path, docx_path):
     # --- SUMMARY ---
     add_section_heading(doc, 'Professional Summary')
     p = doc.add_paragraph()
-    set_spacing(p, before=0, after=2, line=14)
+    set_spacing(p, before=0, after=2, line=12.35)
     run = p.add_run(data['summary'])
     run.font.name = FONT_BODY
     run.font.size = Pt(9.5)
@@ -432,7 +441,7 @@ def convert_html_to_docx(html_path, docx_path):
     add_section_heading(doc, 'Skills')
     for label, text in data['skills']:
         p = doc.add_paragraph()
-        set_spacing(p, before=0, after=2, line=14)
+        set_spacing(p, before=0, after=2, line=12.35)
         run = p.add_run(f"{label}: ")
         run.font.name = FONT_BODY
         run.font.size = Pt(9.5)
@@ -448,14 +457,20 @@ def convert_html_to_docx(html_path, docx_path):
     for exp in data['experience']:
         p = doc.add_paragraph()
         set_spacing(p, before=6, after=0)
-        run = p.add_run(f"{exp['role']}  |  {exp['dates']}")
+        p.paragraph_format.keep_with_next = True
+        run = p.add_run(exp['role'])
         run.font.name = FONT_BODY
         run.font.size = Pt(10.5)
         run.font.bold = True
         run.font.color.rgb = TEXT_DARK
+        run = p.add_run(f"  |  {exp['dates']}")
+        run.font.name = FONT_BODY
+        run.font.size = Pt(9)
+        run.font.color.rgb = TEXT_LIGHT
 
         p = doc.add_paragraph()
         set_spacing(p, before=0, after=2)
+        p.paragraph_format.keep_with_next = True
         run = p.add_run(exp['company'])
         run.font.name = FONT_BODY
         run.font.size = Pt(10)
@@ -463,18 +478,19 @@ def convert_html_to_docx(html_path, docx_path):
         run.font.color.rgb = ACCENT
 
         for bullet in exp['bullets']:
-            add_bullet(doc, bullet['text'], bullet.get('bold_phrases'))
+            p = add_bullet(doc, bullet['text'], bullet.get('bold_phrases'))
+            p.paragraph_format.page_break_before = bullet.get('page_break_before', False)
 
     # --- CERTIFICATIONS ---
     add_section_heading(doc, 'Certifications')
     for cert in data['certifications']:
         p = doc.add_paragraph(style='List Bullet')
-        set_spacing(p, before=0, after=1, line=14)
+        set_spacing(p, before=0, after=1, line=12.35)
+        p.paragraph_format.keep_together = True
         run = p.add_run(cert['name'])
         run.font.name = FONT_BODY
         run.font.size = Pt(9.5)
         run.font.color.rgb = TEXT_DARK
-        run.bold = True
         if cert['issuer']:
             run = p.add_run(f" - {cert['issuer']}")
             run.font.name = FONT_BODY
@@ -485,7 +501,7 @@ def convert_html_to_docx(html_path, docx_path):
     add_section_heading(doc, 'Education')
     for edu_text in data['education']:
         p = doc.add_paragraph()
-        set_spacing(p, before=0, after=2, line=14)
+        set_spacing(p, before=0, after=2, line=12.35)
         # Split on the ndash to bold the degree part
         parts = edu_text.split('\u2013', 1)
         if len(parts) == 2:
